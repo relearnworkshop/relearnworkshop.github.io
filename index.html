@@ -27,11 +27,31 @@
     .container { max-width: 1100px; margin: 0 auto; padding: 0.75rem 2rem 2rem; }
 
     /* Header */
-    header { text-align: center; padding: 2.2rem 0 1.4rem; }
-    .logo { font-family: "Kaushan Script", cursive; font-size: clamp(2.1rem, 6.4vw, 3.3rem); color: var(--primary); font-weight: 400; line-height: 1.1; }
-    .subtitle { font-size: clamp(1.4rem, 4vw, 2.05rem); font-weight: 600; color: var(--primary); margin-top: 0.4rem; }
-    .subtitle .k { font-weight: 800; font-size: 1.12em; background: linear-gradient(transparent 62%, #ffe98a 62%); padding: 0 1px; }
-    .subtitle .k { color: var(--secondary); }
+    header { position: relative; overflow: hidden; text-align: center; margin: -0.75rem calc(50% - 50vw) 0; padding: 3.6rem 1.25rem 3.4rem; background: radial-gradient(900px 380px at 50% -20%, #3182ce 0%, transparent 70%), linear-gradient(135deg, #1a365d 0%, #22508a 55%, #2b6cb0 100%); color: #fff; }
+    header .deco { position: absolute; top: 50%; transform: translateY(-50%); width: 300px; height: 300px; pointer-events: none; }
+    header .deco.l { left: max(-60px, calc(50% - 720px)); }
+    header .deco.r { right: max(-60px, calc(50% - 720px)); }
+    @media (max-width: 900px) { header .deco { opacity: 0.16; } }
+    header .inner { position: relative; z-index: 1; }
+    .logo { font-family: "Kaushan Script", cursive; font-size: clamp(2.1rem, 6.4vw, 3.3rem); color: #fff; font-weight: 400; line-height: 1.1; }
+    .subtitle { font-size: clamp(1.4rem, 4vw, 2.05rem); font-weight: 600; color: #e6f0fb; margin-top: 0.5rem; }
+    .subtitle .k { font-weight: 800; font-size: 1.12em; color: #ffcc00; padding: 0 1px; }
+    header .bar { width: 64px; height: 4px; border-radius: 2px; background: #ffcc00; margin: 1.3rem auto 0; }
+
+    /* Key dates timeline */
+    .timeline { display: grid; grid-template-columns: repeat(6, 1fr); position: relative; margin-top: 0.4rem; }
+    .timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 11px; height: 2px; background: repeating-linear-gradient(90deg, var(--secondary) 0 8px, transparent 8px 14px); }
+    .tl { position: relative; padding-top: 38px; padding-right: 14px; }
+    .tl::before { content: ""; position: absolute; top: 2px; left: 0; width: 20px; height: 20px; border-radius: 50%; background: #fff; border: 4px solid var(--secondary); }
+    .tl.key::before { border-color: #ffcc00; background: #ffcc00; box-shadow: 0 0 0 4px #fff3bf; }
+    .tl .d { font-size: 1.15rem; font-weight: 700; color: var(--primary); line-height: 1.2; }
+    .tl.key .d { color: #b7791f; }
+    .tl .e { color: var(--dark-gray); font-size: 0.9rem; margin-top: 4px; line-height: 1.45; }
+    @media (max-width: 900px) {
+      .timeline { grid-template-columns: 1fr; }
+      .timeline::before { left: 9px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; background: repeating-linear-gradient(180deg, var(--secondary) 0 8px, transparent 8px 14px); }
+      .tl { padding: 0 0 22px 40px; } .tl::before { top: 3px; }
+    }
     .venue { font-size: 1.02rem; font-weight: 600; margin-top: 0.3rem; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
     .btn-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1.3rem; }
     .pill { display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; font-weight: 500; color: var(--primary); padding: 0.36rem 0.95rem; border-radius: 20px; background: linear-gradient(135deg, #f5faff 0%, #eef5fd 100%); box-shadow: #ccdcec 0 3px 0, rgba(0,0,0,0.06) 0 4px 8px; transition: background 0.2s, color 0.2s, box-shadow 0.1s, transform 0.1s; }
@@ -40,11 +60,11 @@
     .pill svg { width: 15px; height: 15px; flex-shrink: 0; }
 
     /* Nav */
-    nav { background: #fff; padding: 0.7rem 1.5rem; margin: 0 -1rem 2.2rem; border-radius: 0 0 12px 12px; position: sticky; top: 0; z-index: 100; box-shadow: rgba(26,54,93,0.1) 0 4px 16px, rgba(26,54,93,0.08) 0 2px 6px; }
-    nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.15rem; }
-    nav a { color: var(--secondary); font-weight: 500; padding: 0.4rem 0.7rem; border-radius: 6px; transition: background 0.2s, color 0.2s; font-size: 1rem; }
-    nav a:hover { background: #e6f1fb; color: var(--primary); }
-    @media (max-width: 700px) { nav { padding: 0.5rem; } nav ul { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; } nav a { white-space: nowrap; font-size: 0.92rem; } }
+    nav { background: #142c4a; margin: 0 calc(50% - 50vw) 2.4rem; padding: 0 1rem; position: sticky; top: 0; z-index: 100; border-top: 1px solid rgba(255,255,255,0.08); box-shadow: 0 6px 18px rgba(15,35,60,0.22); }
+    nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.2rem; max-width: 1100px; margin: 0 auto; }
+    nav a { display: inline-block; color: #d6e4f3; font-weight: 500; padding: 0.85rem 0.85rem 0.7rem; border-bottom: 3px solid transparent; transition: color 0.2s, border-color 0.2s, background 0.2s; font-size: 1rem; }
+    nav a:hover, nav a.active { color: #fff; border-bottom-color: #ffcc00; background: rgba(255,255,255,0.05); }
+    @media (max-width: 700px) { nav { padding: 0 0.25rem; } nav ul { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; scrollbar-width: none; } nav a { white-space: nowrap; font-size: 0.92rem; padding: 0.75rem 0.7rem 0.6rem; } }
 
     /* Sections */
     section { margin-bottom: 2.6rem; scroll-margin-top: 80px; }
@@ -107,8 +127,13 @@
 <div class="container">
 
   <header>
-    <div class="logo">The ReLearn Workshop</div>
-    <div class="subtitle"><span class="k">Re</span>imagining Education and Human <span class="k">Learn</span>ing with AI</div>
+    <svg class="deco l" viewBox="0 0 300 300" aria-hidden="true"><circle cx="150" cy="150" r="118" fill="none" stroke="#ffcc00" stroke-width="2" stroke-dasharray="3 9" opacity="0.7"/><circle cx="150" cy="150" r="74" fill="#3182ce" opacity="0.35"/><circle cx="84" cy="86" r="16" fill="#ffcc00"/><circle cx="226" cy="190" r="9" fill="#ffe98a"/><circle cx="118" cy="236" r="6" fill="#90cdf4"/><circle cx="210" cy="74" r="5" fill="#ffffff" opacity="0.8"/></svg>
+    <svg class="deco r" viewBox="0 0 300 300" aria-hidden="true"><rect x="70" y="70" width="160" height="160" rx="34" fill="none" stroke="#90cdf4" stroke-width="2" opacity="0.55" transform="rotate(18 150 150)"/><circle cx="150" cy="150" r="58" fill="#ffcc00" opacity="0.9"/><circle cx="150" cy="150" r="58" fill="none" stroke="#fff3bf" stroke-width="10" opacity="0.35"/><circle cx="232" cy="96" r="12" fill="#3182ce"/><circle cx="72" cy="214" r="10" fill="#ffe98a"/><circle cx="246" cy="232" r="5" fill="#ffffff" opacity="0.8"/></svg>
+    <div class="inner">
+      <div class="logo">The ReLearn Workshop</div>
+      <div class="subtitle"><span class="k">Re</span>imagining Education and Human <span class="k">Learn</span>ing with AI</div>
+      <div class="bar"></div>
+    </div>
   </header>
 
   <nav>
@@ -211,12 +236,14 @@
 
   <section id="dates">
     <h2>Important Dates</h2>
-    <div class="item"><span class="when">Dec 1, 2026</span><span class="what">Call for papers</span></div>
-    <div class="item key"><span class="when">Jan 16, 2027</span><span class="what">Paper submission deadline (AoE)</span></div>
-    <div class="item"><span class="when">Jan 17 – Feb 8, 2027</span><span class="what">Review period</span></div>
-    <div class="item"><span class="when">Feb 15, 2027</span><span class="what">Acceptance notification</span></div>
-    <div class="item"><span class="when">Mar 2027</span><span class="what">Roundtable challenge form opens; contributed talks &amp; schedule announced</span></div>
-    <div class="item key"><span class="when">TBA</span><span class="what">Workshop at ICLR 2027</span></div>
+    <div class="timeline">
+      <div class="tl"><div class="d">Dec 1, 2026</div><div class="e">Call for papers</div></div>
+      <div class="tl key"><div class="d">Jan 16, 2027</div><div class="e">Paper submission deadline (AoE)</div></div>
+      <div class="tl"><div class="d">Jan 17 – Feb 8</div><div class="e">Review period</div></div>
+      <div class="tl"><div class="d">Feb 15, 2027</div><div class="e">Acceptance notification</div></div>
+      <div class="tl"><div class="d">Mar 2027</div><div class="e">Roundtable challenge form opens; contributed talks &amp; schedule announced</div></div>
+      <div class="tl key"><div class="d">TBA</div><div class="e">Workshop at ICLR 2027</div></div>
+    </div>
   </section>
 
   <section id="schedule">
@@ -255,5 +282,21 @@
 
   <footer>© 2026 The ReLearn Workshop</footer>
 </div>
+<script>
+  (function () {
+    var links = document.querySelectorAll('nav a[href^="#"]');
+    var map = {};
+    links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && map[e.target.id]) {
+          links.forEach(function (a) { a.classList.remove('active'); });
+          map[e.target.id].classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    Object.keys(map).forEach(function (id) { var s = document.getElementById(id); if (s) obs.observe(s); });
+  })();
+</script>
 </body>
 </html>
